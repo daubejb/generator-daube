@@ -14,7 +14,6 @@ class GeneratorDaube extends Generator {
           type: 'input',
           name: 'name',
           message: 'Element name',
-          default: this.appname,
           validate: str => /^([a-z])(?!.*[<>])(?=.*-).+$/.test(str),
         }, {
           type: 'input',
