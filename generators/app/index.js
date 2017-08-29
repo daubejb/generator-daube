@@ -3,12 +3,6 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
 
-// function generateClassName(name) {
-//   return name.split('-').reduce((previous, part) => {
-//     return previous + part.charAt(0).toUpperCase() + part.slice(1);
-//   }, '');
-// }
-
 class GeneratorDaube extends Generator {
 
   prompting() {
@@ -47,8 +41,6 @@ class GeneratorDaube extends Generator {
 
   default() {
     const { name } = this.props;
-
-    // this.props.class = generateClassName(name);
 
     if (path.basename(this.destinationPath()) !== name) {
       this.log(`Your component should be in a '${name}' folder, creating now...`);
