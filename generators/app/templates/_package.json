@@ -1,0 +1,27 @@
+{
+  "name": "<%= props.name %>",
+  "version": "<%= props.version %>",
+  "description": "<%= props.description %>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daubejb/<%= props.name %>.git"
+  },
+  "main": "<%= props.name %>.js",
+  "scripts": {
+    "prepublish": "./node_modules/.bin/gulp",
+    "build": "./node_modules/.bin/gulp"
+  },
+  "author": "<%= props.author %>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  }
+}
