@@ -1,6 +1,6 @@
 {
   "name": "generator-daube",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A daube web component generator",
   "files": [
     "generators"
