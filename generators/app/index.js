@@ -53,22 +53,22 @@ class GeneratorDaube extends Generator {
     const { author } = this.props;
 
     this.fs.copyTpl(
-      this.templatePath('_package.json'),
+      this.templatePath('package.json'),
       this.destinationPath('package.json'),
       this
     );
     this.fs.copyTpl(
-      this.templatePath('_custom-element.js'),
+      this.templatePath('custom-element.js'),
       this.destinationPath(`${name}.js`),
       this
     );
     this.fs.copyTpl(
-      this.templatePath('_gulpfile.js'),
+      this.templatePath('gulpfile.js'),
       this.destinationPath(`gulpfile.js`),
       this
     );
     this.fs.copyTpl(
-      glob.sync(this.templatePath('!(_custom-element.js|_package.json|_gulpfile.js)'), { dot: true }),
+      glob.sync(this.templatePath('!(custom-element.js|package.json|gulpfile.js)'), { dot: true }),
       this.destinationPath(),
       this
     );
