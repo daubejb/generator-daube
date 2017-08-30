@@ -81,8 +81,18 @@ module.exports = class extends Generator {
       this
     );
     this.fs.copyTpl(
-      glob.sync(this.templatePath('!(custom-element.js | package.json | gulpfile.js)'), { dot: true }),
-      this.destinationPath(),
+      this.templatePath('.gitignore'),
+      this.destinationPath(`.gitignore`),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('LICENSE'),
+      this.destinationPath('LICENSE'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md'),
       this
     );
   }
@@ -99,7 +109,6 @@ module.exports = class extends Generator {
 
   end() {
     this.log(chalk.bold('\n---Setup Complete---'));
-    this.log(
-        'Read the project README for information about what to do next.\n');
+    this.log('Read the project README for information about what to do next.\n');
   }
 }
