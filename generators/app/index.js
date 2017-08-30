@@ -3,6 +3,12 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
 
+function generateClassName(name) {
+  return name.split('-').reduce((previous, part) => {
+    return previous + part.charAt(0).toUpperCase() + part.slice(1);
+  }, '');
+}
+
 module.exports = class extends Generator {
 
   prompting() {
@@ -13,7 +19,8 @@ module.exports = class extends Generator {
         {
           type: 'input',
           name: 'name',
-          message: 'Element name',
+          message: 'Element name - min of two dash separated words',
+          default: this.appname,
           validate: str => /^([a-z])(?!.*[<>])(?=.*-).+$/.test(str),
         }, {
           type: 'input',
@@ -41,6 +48,8 @@ module.exports = class extends Generator {
   default() {
     const { name } = this.props;
 
+    this.props.class = generateClassName(name);
+
     if (path.basename(this.destinationPath()) !== name) {
       this.log(`Your component should be in a '${name}' folder, creating now...`);
       mkdirp(name);
@@ -67,13 +76,17 @@ module.exports = class extends Generator {
       this
     );
     this.fs.copyTpl(
-      glob.sync(this.templatePath('!(custom-element.js|package.json|gulpfile.js)'), { dot: true }),
+      glob.sync(this.templatePath('!(custom-element.js | package.json | gulpfile.js)'), { dot: true }),
       this.destinationPath(),
       this
     );
   }
 
   install() {
-    this.installDependencies();
+    this.installDependencies({
+      npm: true,
+      bower: false,
+      yarn: false
+    });
   }
 }
