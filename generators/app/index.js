@@ -24,7 +24,7 @@ class GeneratorDaube extends Generator {
           type: 'input',
           name: 'description',
           message: 'Brief description of the element',
-          default: 'A simple ' + this.appname + ' custom element provided by daubedesign',
+          default: 'A simple custom element provided by daubedesign',
         }, {
           type: 'input',
           name: 'author',
