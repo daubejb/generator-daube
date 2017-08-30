@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+const chalk = require('chalk');
 const Generator = require('yeoman-generator');
 const path = require('path');
 const mkdirp = require('mkdirp');
