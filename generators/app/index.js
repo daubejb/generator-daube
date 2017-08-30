@@ -1,3 +1,4 @@
+import * as chalk from 'chalk';
 const Generator = require('yeoman-generator');
 const path = require('path');
 const mkdirp = require('mkdirp');
@@ -11,6 +12,10 @@ function generateClassName(name) {
 
 module.exports = class extends Generator {
 
+  initializing() {
+    // Yeoman replaces dashes with spaces. We want dashes.
+    this.appname = this.appname.replace(/\s+/g, '-');
+  }
   prompting() {
     const done = this.async();
 
@@ -83,10 +88,18 @@ module.exports = class extends Generator {
   }
 
   install() {
+    this.log(chalk.bold('\n---Element created---'));
+    this.log('Installing dependencies...')
     this.installDependencies({
       npm: true,
       bower: false,
       yarn: false
     });
+  }
+
+  end() {
+    this.log(chalk.bold('\n---Setup Complete---'));
+    this.log(
+        'Read the project README for information about what to do next.\n');
   }
 }
