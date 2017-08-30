@@ -29,7 +29,7 @@ class GeneratorDaube extends Generator {
           type: 'input',
           name: 'author',
           message: 'Author of the element',
-          default: 'Jeffrey B. Daube',
+          default: 'Jeffrey B Daube',
         }
       ]
     ).then(answers => {
