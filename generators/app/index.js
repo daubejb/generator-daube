@@ -3,7 +3,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
 
-class GeneratorDaube extends Generator {
+module.exports = class extends Generator {
 
   prompting() {
     const done = this.async();
