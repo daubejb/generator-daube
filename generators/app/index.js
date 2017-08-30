@@ -77,5 +77,3 @@ module.exports = class extends Generator {
     this.installDependencies();
   }
 }
-
-module.exports = GeneratorDaube;
