@@ -1,21 +1,33 @@
+const template = document.createElement('template');
+template.innerHTML = `
+  <style>
+    :host {
+      display: block;
+      font-size: 1rem;
+    
+    :host([hidden]) {
+      display: none;
+    }
+    
+
+  </style>
+`;
+
+if (window.ShadyCSS) {
+  ShadyCSS.prepareTemplate(template, '<%= props.name %>');
+}
+
 class <%= props.class %> extends HTMLElement {
-  static get template() {
-    return `
-<style></style>
-<div></div>
-`
-  }
   static get observedAttributes() {}
   constructor() {
     super();
-    var shadowRoot = this.initShadowDom();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  connectedCallback() {}
-  initShadowDom() {
-    let shadowRoot = this.attachShadow({mode: 'open'});
-    let tmpl = <%= props.class %>.template;
-    shadowRoot.innerHTML = tmpl;
-    return shadowRoot;
+  connectedCallback() {
+    if (window.ShadyCSS) {
+      ShadyCSS.styleElement(this);
+    }
   }
 } // Class CustomElement
 customElements.define("<%= props.name %>", <%= props.class %>);

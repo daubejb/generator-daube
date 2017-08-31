@@ -13,7 +13,7 @@ function generateClassName(name) {
 module.exports = class extends Generator {
 
   initializing() {
-    // Yeoman replaces dashes with spaces. We want dashes.
+    // Yeoman replaces dashes with spaces. Elements require dashes.
     this.appname = this.appname.replace(/\s+/g, '-');
   }
   prompting() {
@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         {
           type: 'input',
           name: 'name',
-          message: 'Element name - min of two dash separated words',
+          message: 'Element name must be a min of two names separated by dash',
           default: this.appname,
           validate: str => /^([a-z])(?!.*[<>])(?=.*-).+$/.test(str),
         }, {
