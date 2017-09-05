@@ -12,7 +12,7 @@ Please see [webcomponents.org](https://www.webcomponents.org/polyfills) for more
 
 Import the custom element by:
 ```JavaScript
-<script src="./node_modules/<%= props.name%>/<%= props.name%>.compiled.js"></script>
+<script src="./node_modules/<%= props.name%>/<%= props.name%>-compiled.js"></script>
 ```
 
 ## Usage
