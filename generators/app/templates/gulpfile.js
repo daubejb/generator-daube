@@ -14,7 +14,7 @@ gulp.task('compile', () => {
     .pipe(gulpif(/\.js$/, babel()))
     .pipe(gulpif(/\.js$/, uglify()))
     .pipe(rename({
-      suffix: ".compiled"
+      suffix: "-compiled"
     }))
     .pipe(gulp.dest('./'));
 });
