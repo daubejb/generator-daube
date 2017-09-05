@@ -6,7 +6,7 @@ const rename = require('gulp-rename');
 const del = require('del');
 
 gulp.task('clean', () => {
-  return del(['./*.compiled.*'])
+  return del(['./*-compiled.*'])
 });
 
 gulp.task('compile', () => {
