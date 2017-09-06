@@ -9,6 +9,7 @@ template.innerHTML = `
       color: rgba(0,0,0,0.87);
       margin: 0;
       padding: 0;
+    }
 
     :host([hidden]) {
       display: none;
@@ -25,7 +26,7 @@ class <%= props.class %> extends HTMLElement {
   static get observedAttributes() {}
   constructor() {
     super();
-    
+
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
